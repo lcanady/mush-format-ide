@@ -1,0 +1,11 @@
+import { AppBar, Toolbar } from "@material-ui/core";
+
+const Nav = ({ children }) => {
+  return (
+    <AppBar position="static" variant="outlined">
+      <Toolbar>{children}</Toolbar>
+    </AppBar>
+  );
+};
+
+export default Nav;

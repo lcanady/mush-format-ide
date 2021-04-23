@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import ContextProvider from "./Context";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import EditorPage from "./pages/EditorPage";
+import NewLesson from "./pages/NewLesson";
+import { CssBaseline } from "@material-ui/core";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextProvider>
+      <CssBaseline />
+      <Router>
+        <Route path="/login" exact component={Login} />
+        <Route path="/new" exact component={NewLesson} />
+        <Route path="/" exact component={EditorPage} />
+      </Router>
+    </ContextProvider>
   );
 }
 
