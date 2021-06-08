@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "fsm-ide"
+    "default": "ursamu-575d6"
+  },
+  "targets": {
+    "ursamu-575d6": {
+      "hosting": {
+        "mush-format-f174f": [
+          "mush-format-f174f"
+        ]
+      }
+    }
   }
 }

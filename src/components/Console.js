@@ -11,16 +11,19 @@ import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import { Resizable } from "re-resizable";
 import { useState } from "react";
 import TabPanel from "./TabPanel";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setHeight } from "../slices/EditorSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   paper: {
-    borderLeft: "none",
     height: "100%",
+    display: "flex",
+    flexDirection: "column",
   },
   toolbar: {
     borderBottom: "1px solid rgba(0,0,0,.2)",
+    top: 0,
   },
   arrow: {
     marginLeft: "auto",
@@ -28,14 +31,17 @@ const useStyles = makeStyles((theme) => ({
   },
   console: {
     fontFamily: "'Roboto Mono', monospace",
+    flexShrink: 1,
   },
+  resize: {},
 }));
 
 const Console = () => {
-  const [height, setHeight] = useState(50);
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const classes = useStyles();
   const value = useSelector((state) => state.editor.console.value);
+  const height = useSelector((state) => state.editor.console.height);
 
   return (
     <Resizable
@@ -46,7 +52,9 @@ const Console = () => {
       onResize={(e, direction, ref, d) =>
         height + d.height < 120 ? setVisible(false) : setVisible(true)
       }
-      onResizeStop={(e, direction, ref, d) => setHeight(height + d.height)}
+      onResizeStop={(e, direction, ref, d) =>
+        dispatch(setHeight(height + d.height))
+      }
       size={{ height }}
     >
       <Paper variant="outlined" square className={classes.paper}>
@@ -59,7 +67,7 @@ const Console = () => {
               className={classes.arrow}
               onClick={() => {
                 setVisible(true);
-                setHeight(height + 600);
+                dispatch(setHeight(height + 600));
               }}
             >
               <KeyboardArrowUp />
@@ -69,7 +77,7 @@ const Console = () => {
               className={classes.arrow}
               onClick={() => {
                 setVisible(false);
-                setHeight(50);
+                dispatch(setHeight(50));
               }}
             >
               <KeyboardArrowDown />
@@ -77,10 +85,17 @@ const Console = () => {
           )}
         </Toolbar>
         <TabPanel value={0} index={visible && 0}>
-          <div className={classes.console}>
-            {value.map((log, idx) => {
-              if (log.type === "info") return <p key={idx}>{log.data}</p>;
-            })}
+          <div
+            className={classes.console}
+            style={{
+              maxHeight: `calc(${height}px - 56px)`,
+              overflow: "auto",
+              padding: "8px",
+            }}
+          >
+            <pre>
+              <code>{value}</code>
+            </pre>
           </div>
         </TabPanel>
       </Paper>

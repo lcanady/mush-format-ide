@@ -1,1 +1,9 @@
-{}
+{
+  "hosting": [
+    {
+      "target": "mush-format-f174f",
+      "public": "build",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    }
+  ]
+}

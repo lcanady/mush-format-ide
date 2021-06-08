@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   editorValue: "",
+  search: "",
   console: {
-    value: [],
+    value: "",
+    height: 50,
   },
 };
 
@@ -15,11 +17,18 @@ export const EditorSlice = createSlice({
       state.editorValue = action.payload;
     },
     setConsole: (state, action) => {
-      state.console.value = [...state.console.value, action.payload];
+      state.console.value = action.payload;
+    },
+    setHeight: (state, action) => {
+      state.console.height = action.payload;
+    },
+    setSearch: (state, action) => {
+      state.search = action.payload;
     },
   },
 });
 
-export const { setEditor, setConsole } = EditorSlice.actions;
+export const { setEditor, setConsole, setHeight, setSearch } =
+  EditorSlice.actions;
 
 export default EditorSlice.reducer;
