@@ -33,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Roboto Mono', monospace",
     flexShrink: 1,
   },
+  line: {
+    margin: 0,
+    padding: 0,
+  },
   resize: {},
 }));
 
@@ -67,7 +71,7 @@ const Console = () => {
               className={classes.arrow}
               onClick={() => {
                 setVisible(true);
-                dispatch(setHeight(height + 600));
+                dispatch(setHeight(height + 300));
               }}
             >
               <KeyboardArrowUp />
@@ -93,9 +97,9 @@ const Console = () => {
               padding: "8px",
             }}
           >
-            <pre>
-              <code>{value}</code>
-            </pre>
+            {value.split("\n").map((line) => (
+              <p className={classes.line}>{line}</p>
+            ))}
           </div>
         </TabPanel>
       </Paper>

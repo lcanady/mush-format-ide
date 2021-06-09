@@ -1226,10 +1226,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@digibear/mush-format@^0.14.4":
-  version "0.14.4"
-  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-0.14.4.tgz#588c1c7931c356f574c9d7d1df264fb4a79ddeb6"
-  integrity sha512-zh0jjSF2N3N+RJlN58PDP4NJPRybSWh6JyEIlifz3+KS72SE0Ogd75ItBk4Puwe8B4640gLj0rjYmtnBSqLitQ==
+"@digibear/mush-format@^0.14.5":
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-0.14.5.tgz#219876a0bd2c649c4ad6e36ce3a3b6baefcf32b4"
+  integrity sha512-Gg5u9R/Pz2gGnKKewIKArr/OSUl8RugmnjoRXoFPo+vM2b74F3pfyBddHELfwC5+hm8yrQphtwQPBZ9wpMTITg==
   dependencies:
     "@ursamu/parser" "^1.2.1"
     commander "^6.2.0"
