@@ -1226,17 +1226,19 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@digibear/mush-format@^0.14.5":
-  version "0.14.5"
-  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-0.14.5.tgz#219876a0bd2c649c4ad6e36ce3a3b6baefcf32b4"
-  integrity sha512-Gg5u9R/Pz2gGnKKewIKArr/OSUl8RugmnjoRXoFPo+vM2b74F3pfyBddHELfwC5+hm8yrQphtwQPBZ9wpMTITg==
+"@digibear/mush-format@^0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-0.16.2.tgz#d66412dc356635c50beab22147ca1a0e9c1da01d"
+  integrity sha512-fODM1kULA2s7iJtIdGWJjGbz9RHJkZxoQpKkFbTjIUzLL/NR5tu+LX0Sv5ofcN3QNdQirxOkxVApajVoVL/8wg==
   dependencies:
+    "@types/valid-url" "^1.0.3"
     "@ursamu/parser" "^1.2.1"
     commander "^6.2.0"
     inquirer "^7.3.3"
     isomorphic-fetch "^3.0.0"
     line-diff "^2.1.1"
     string-replace-async "^2.0.0"
+    valid-url "^1.0.9"
     yaml "^1.10.0"
 
 "@emotion/babel-plugin@^11.3.0":
@@ -2430,6 +2432,11 @@
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
+
+"@types/valid-url@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/valid-url/-/valid-url-1.0.3.tgz#a124389fb953559c7f889795a98620e91adb3687"
+  integrity sha512-+33x29mg+ecU88ODdWpqaie2upIuRkhujVLA7TuJjM823cNMbeggfI6NhxewaRaRF8dy+g33e4uIg/m5Mb3xDQ==
 
 "@types/webpack-sources@*":
   version "2.1.0"
@@ -12266,6 +12273,11 @@ v8-to-istanbul@^7.0.0:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^1.6.0"
     source-map "^0.7.3"
+
+valid-url@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
+  integrity sha1-HBRHm0DxOXp1eC8RXkCGRHQzogA=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
