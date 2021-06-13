@@ -13,6 +13,13 @@ import { useState } from "react";
 import TabPanel from "./TabPanel";
 import { useDispatch, useSelector } from "react-redux";
 import { setHeight } from "../slices/EditorSlice";
+import CodeMirror from "@uiw/react-codemirror";
+import "codemirror/keymap/sublime";
+import "codemirror/addon/scroll/simplescrollbars";
+import "codemirror/addon/display/autorefresh";
+import "codemirror/addon/comment/comment";
+import "codemirror/addon/edit/matchbrackets";
+import "codemirror/theme/monokai.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -44,7 +51,7 @@ const Console = () => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const classes = useStyles();
-  const value = useSelector((state) => state.editor.console.value);
+  const v = useSelector((state) => state.editor.console.value);
   const height = useSelector((state) => state.editor.console.height);
 
   return (
@@ -52,7 +59,7 @@ const Console = () => {
       className={classes.resize}
       enable={{ top: true }}
       minHeight="50px"
-      maxHeight="50vh"
+      maxHeight={height}
       onResize={(e, direction, ref, d) =>
         height + d.height < 120 ? setVisible(false) : setVisible(true)
       }
@@ -69,9 +76,9 @@ const Console = () => {
           {height <= 50 ? (
             <IconButton
               className={classes.arrow}
-              onClick={() => {
+              onClick={(ev) => {
                 setVisible(true);
-                dispatch(setHeight(height + 300));
+                dispatch(setHeight(height + 400));
               }}
             >
               <KeyboardArrowUp />
@@ -89,18 +96,14 @@ const Console = () => {
           )}
         </Toolbar>
         <TabPanel value={0} index={visible && 0}>
-          <div
-            className={classes.console}
-            style={{
-              maxHeight: `calc(${height}px - 56px)`,
-              overflow: "auto",
-              padding: "8px",
+          <CodeMirror
+            height={`calc(${height}px - 50px)`}
+            options={{
+              keyMap: "sublime",
+              theme: "monokai",
             }}
-          >
-            {value.split("\n").map((line) => (
-              <p className={classes.line}>{line}</p>
-            ))}
-          </div>
+            value={v}
+          />
         </TabPanel>
       </Paper>
     </Resizable>

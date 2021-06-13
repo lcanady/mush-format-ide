@@ -1226,10 +1226,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@digibear/mush-format@^0.16.2":
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-0.16.2.tgz#d66412dc356635c50beab22147ca1a0e9c1da01d"
-  integrity sha512-fODM1kULA2s7iJtIdGWJjGbz9RHJkZxoQpKkFbTjIUzLL/NR5tu+LX0Sv5ofcN3QNdQirxOkxVApajVoVL/8wg==
+"@digibear/mush-format@^0.16.10":
+  version "0.16.10"
+  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-0.16.10.tgz#71540ef9d469f421b8136ac42ff3148b979967ef"
+  integrity sha512-DhUorFgER/knu62AbGZppCALeR6dgnDkJeLxH0zKhoTAzFHdQZugU15exNF6egCOB47gamm+MJPgRP/VG3h3Jg==
   dependencies:
     "@types/valid-url" "^1.0.3"
     "@ursamu/parser" "^1.2.1"

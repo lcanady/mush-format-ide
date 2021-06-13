@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Editor from "../components/Editor";
 import Nav from "../components/Nav";
-import { setConsole, setEditor, setSearch } from "../slices/EditorSlice";
+import { setEditor, setSearch } from "../slices/EditorSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: "auto",
-      width: "auto",
+      width: "300px",
     },
   },
   inputRoot: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing.apply(4)}px)`,
-    width: "100%",
+    width: "300px",
   },
   button: {
     marginLeft: theme.spacing(2),
@@ -60,7 +60,7 @@ function EditorPage() {
         <Typography variant="h6">MUSH-Format IDE</Typography>
         <div className={classes.search}>
           <InputBase
-            placeholder="Load a Github Repo..."
+            placeholder="git:<user>/<repo>@branch/path"
             classes={{
               root: classes.inputRoot,
               input: classes.inputInput,
@@ -69,6 +69,15 @@ function EditorPage() {
             onChange={(ev) => {
               dispatch(setSearch(ev.currentTarget.value));
             }}
+            onKeyPress={async (ev) => {
+              if (ev.key === "Enter") {
+                const { combined } = await formatter.format(
+                  "#include " + value
+                );
+
+                dispatch(setEditor(combined));
+              }
+            }}
           />
         </div>
         <Button
@@ -76,12 +85,12 @@ function EditorPage() {
           variant="contained"
           color="default"
           onClick={async () => {
-            const res = await fetch(value);
-            const text = await res.text();
-            console.log(text);
-            dispatch(setEditor(text));
-            const data = await formatter.format(text);
-            dispatch(setConsole(data));
+            const { data, combined } = await formatter.format(
+              "#include " + value
+            );
+
+            dispatch(setEditor(combined));
+            console.log(data);
           }}
         >
           Load

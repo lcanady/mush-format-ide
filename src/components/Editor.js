@@ -2,6 +2,7 @@ import { makeStyles, Paper } from "@material-ui/core";
 import { Formatter } from "@digibear/mush-format";
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
+import "codemirror/theme/monokai.css";
 import "codemirror/addon/scroll/simplescrollbars";
 import "codemirror/addon/display/autorefresh";
 import "codemirror/addon/comment/comment";
@@ -20,9 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     overflowY: "none",
   },
-  toolbar: {
-    borderBottom: "1px solid rgba(0,0,0,.2)",
-  },
+  toolbar: {},
   buttons: {
     marginLeft: "auto",
   },
@@ -33,21 +32,28 @@ const useStyles = makeStyles((theme) => ({
 
 const Editor = () => {
   const value = useSelector((state) => state.editor.editorValue);
+  const height = useSelector((state) => state.editor.console.height);
   const dispatch = useDispatch();
   const classes = useStyles();
 
   const debounceFormat = debounce(async (text) => {
-    const res = await formatter.format(text.trim());
-    dispatch(setConsole(res));
+    const { data } = await formatter.format("\n" + text);
+    dispatch(setConsole(data));
   }, 500);
 
   return (
     <Paper className={classes.paper} variant="outlined" square>
-      <div className={classes.editorContainer} style={{ height: "300px" }}>
+      <div
+        className={classes.editorContainer}
+        style={{
+          maxHeight: `calc(100vh - (${height}px + 70px))`,
+        }}
+      >
         <CodeMirror
           height="100%"
           options={{
             keyMap: "sublime",
+            theme: "monokai",
           }}
           value={value}
           onChange={(ev) => {
