@@ -9,7 +9,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import GitHub from "@material-ui/icons/GitHub";
-import gitHub from "@material-ui/icons/GitHub";
 import { useDispatch, useSelector } from "react-redux";
 import Editor from "../components/Editor";
 import Nav from "../components/Nav";

@@ -12,6 +12,7 @@ import Console from "./Console";
 import { useDispatch, useSelector } from "react-redux";
 import { setConsole, setEditor } from "../slices/EditorSlice";
 import debounce from "lodash.debounce";
+import { useEffect } from "react";
 
 const formatter = new Formatter();
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,11 @@ const Editor = () => {
     dispatch(setConsole(data));
   }, 500);
 
+  useEffect(() => {
+    const val = localStorage.getItem("mformtext") || "";
+    dispatch(setEditor(val));
+  }, [dispatch]);
+
   return (
     <Paper className={classes.paper} variant="outlined" square>
       <div
@@ -59,6 +65,7 @@ const Editor = () => {
           value={value}
           onChange={(ev) => {
             dispatch(setEditor(ev.getValue()));
+            localStorage.setItem("mformtext", ev.getValue());
             debounceFormat(ev.getValue());
           }}
         />
