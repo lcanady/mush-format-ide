@@ -2,9 +2,8 @@ import {
   IconButton,
   makeStyles,
   Paper,
-  Tab,
-  Tabs,
   Toolbar,
+  Typography,
 } from "@material-ui/core";
 import KeyboardArrowUp from "@material-ui/icons/KeyboardArrowUp";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
@@ -44,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: 0,
   },
+  consoleTitle: {
+    marginLeft: theme.spacing(4),
+  },
   resize: {},
 }));
 
@@ -60,19 +62,27 @@ const Console = () => {
       enable={{ top: true }}
       minHeight="50px"
       maxHeight={height}
-      onResize={(e, direction, ref, d) =>
-        height + d.height < 120 ? setVisible(false) : setVisible(true)
-      }
+      onResize={(e, direction, ref, d) => {
+        height + d.height < 120 ? setVisible(false) : setVisible(true);
+      }}
       onResizeStop={(e, direction, ref, d) =>
         dispatch(setHeight(height + d.height))
       }
       size={{ height }}
     >
       <Paper variant="outlined" square className={classes.paper}>
-        <Toolbar disableGutters variant="dense" className={classes.toolbar}>
-          <Tabs indicatorColor="primary" value={0}>
-            <Tab label="Console" />
-          </Tabs>
+        <Toolbar
+          disableGutters
+          variant="dense"
+          className={classes.toolbar}
+          onClick={() => {
+            setVisible(!visible);
+            dispatch(setHeight(height === 50 ? height + 400 : 50));
+          }}
+        >
+          <Typography variant="h6" className={classes.consoleTitle}>
+            Console
+          </Typography>
           {height <= 50 ? (
             <IconButton
               className={classes.arrow}
@@ -101,6 +111,7 @@ const Console = () => {
             options={{
               keyMap: "sublime",
               theme: "monokai",
+              lineWrapping: true,
             }}
             value={v}
           />

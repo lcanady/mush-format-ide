@@ -54,6 +54,7 @@ const Editor = () => {
           options={{
             keyMap: "sublime",
             theme: "monokai",
+            lineWrapping: true,
           }}
           value={value}
           onChange={(ev) => {

@@ -3,10 +3,13 @@ import {
   Button,
   fade,
   Grid,
+  IconButton,
   InputBase,
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import GitHub from "@material-ui/icons/GitHub";
+import gitHub from "@material-ui/icons/GitHub";
 import { useDispatch, useSelector } from "react-redux";
 import Editor from "../components/Editor";
 import Nav from "../components/Nav";
@@ -40,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing.apply(4)}px)`,
-    width: "300px",
+    width: "260px",
   },
   button: {
     marginLeft: theme.spacing(2),
@@ -95,6 +98,15 @@ function EditorPage() {
         >
           Load
         </Button>
+        <IconButton
+          onClick={() =>
+            window
+              .open("https://github.com/digibear-io/mush-format", "_blank")
+              .focus()
+          }
+        >
+          <GitHub />
+        </IconButton>
       </Nav>
       <Grid container style={{ flexGrow: 1 }}>
         <Grid item xs={12}>
