@@ -8,6 +8,7 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import { Settings } from "@material-ui/icons";
 import GitHub from "@material-ui/icons/GitHub";
 import { useDispatch, useSelector } from "react-redux";
 import Editor from "../components/Editor";
@@ -44,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing.apply(4)}px)`,
     width: "260px",
   },
+  gitHub: {
+    margin: theme.spacing(2),
+  },
   button: {
     marginLeft: theme.spacing(2),
   },
@@ -59,7 +63,10 @@ function EditorPage() {
   return (
     <div className={classes.root}>
       <Nav>
-        <Typography variant="h6">MUSH-Format IDE</Typography>
+        <IconButton style={{ marginRight: "16px" }}>
+          <Settings />
+        </IconButton>
+        <Typography variant="h5">MUSH-Format IDE</Typography>
         <div className={classes.search}>
           <InputBase
             placeholder="git:<user>/<repo>@branch/path"
@@ -98,6 +105,7 @@ function EditorPage() {
           Load
         </Button>
         <IconButton
+          className={classes.gitHub}
           onClick={() =>
             window
               .open("https://github.com/digibear-io/mush-format", "_blank")
